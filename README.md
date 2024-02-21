@@ -8,12 +8,11 @@ Run command
 npm ionstall
 ```
 
-##How to run the tests
+## How to run the tests
 Run command:
 ```
 npm run wduio
 ```
-
 
 ## How to wiew report
 First run the tests and then run commands:
