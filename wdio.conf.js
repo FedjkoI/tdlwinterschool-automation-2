@@ -1,4 +1,5 @@
 import { browser } from '@wdio/globals';
+
 export const config = {
     //
     // ====================
@@ -22,11 +23,11 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        // ToDo: define location for spec files here
+        './features/**/*.feature'
     ],
     // Patterns to exclude.
     exclude: [
-        './features/**/*.feature'
+        // 'path/to/excluded/files'
     ],
     //
     // ============
@@ -127,12 +128,12 @@ export const config = {
     reporters: ['spec',['allure', {
         outputDir: 'allure-results',
         useCucumberStepReporter: true
-}]],
+    }]],
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: ['./feature/step-definitions/*.js'],
+        require: ['./features/step-definitions/*.js'],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -257,7 +258,7 @@ export const config = {
      * @param {object}             context          Cucumber World object
      */
     afterStep: async function (step, scenario, result, context) {
-        if(result.error){
+        if (result.error) {
             await browser.takeScreenshot();
         }
     },
